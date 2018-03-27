@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+ 	<title>&lrm;</title>
+  	<meta charset="UTF-8">
+  	<link rel="stylesheet" href="./styles.css">
+  </head>
+
+  <body>
+  	<div id='container'>
+  	  <canvas id="three-canvas"></canvas>
+  	  	<script src="./scripts/core.js"></script>
+  	  	<script src="./scripts/libs.js"></script>
+  	  	<script src="./scripts/main.js"></script>
+  	  	<script defer>
+
+  	  		const canvas = document.getElementById( "three-canvas" );
+			const mainScene = new Scene( canvas );
+			
+			bindEventListeners();
+			render();
+
+			function bindEventListeners() {
+			    window.onresize = resizeCanvas();
+			    resizeCanvas(); 
+			}
+			
+			function resizeCanvas() {
+			    canvas.style.width = '100%';
+			    canvas.style.height= '100%';
+			    
+			    canvas.width  = canvas.offsetWidth;
+			    canvas.height = canvas.offsetHeight;
+			    
+			    mainScene.onWindowResize();
+			}
+			
+			function render() {
+			    requestAnimationFrame( render );
+			    mainScene.update();
+			}
+		</script>
+
+	</div>
+  </body>
+  
+</html>
